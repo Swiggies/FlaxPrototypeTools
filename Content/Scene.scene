@@ -1,0 +1,226 @@
+{
+	"ID": "735142bc41030ba12150e19a6fabd798",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6335,
+	"Data": [
+		{
+			"ID": "735142bc41030ba12150e19a6fabd798",
+			"TypeName": "FlaxEngine.Scene",
+			"LightmapSettings": {
+				"IndirectLightingIntensity": 1.0,
+				"GlobalObjectsScale": 1.0,
+				"ChartsPadding": 3,
+				"AtlasSize": 1024,
+				"BounceCount": 1,
+				"CompressLightmaps": true,
+				"UseGeometryWithNoMaterials": true,
+				"Quality": 10
+			}
+		},
+		{
+			"ID": "8fd12f9f4d17abec0dbbaaa3b612fd4f",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"Name": "Sun",
+			"Transform": {
+				"Translation": {
+					"X": 40.0,
+					"Y": 160.0,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 0.3826834559440613,
+					"Y": 0.0,
+					"Z": 0.0,
+					"W": 0.9238795042037964
+				}
+			}
+		},
+		{
+			"ID": "2532b32246ab840163f14898041b8576",
+			"TypeName": "FlaxEngine.Sky",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"Name": "Sky",
+			"Transform": {
+				"Translation": {
+					"X": 40.0,
+					"Y": 150.0,
+					"Z": 0.0
+				}
+			},
+			"Sun": "8fd12f9f4d17abec0dbbaaa3b612fd4f"
+		},
+		{
+			"ID": "5ea3500145a5807b19d8e7857b857555",
+			"TypeName": "FlaxEngine.SkyLight",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"Name": "SkyLight",
+			"Brightness": 2.5,
+			"CustomTexture": "c54410104ff39427bc11e5bc761d66b0"
+		},
+		{
+			"ID": "a3bd74334b798092a34f2c9c491d6e73",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"Name": "Floor",
+			"Transform": {
+				"Scale": {
+					"X": 4.0,
+					"Y": 0.5,
+					"Z": 4.0
+				}
+			},
+			"Model": "b43f0f8f4aaba3f3156896a5a22ba493",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "1771b53343d461faacdf2c8581b1fdbb",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "a54fcbc94799ef0b29554fa569bb6d3c",
+			"TypeName": "FlaxEngine.Camera",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"Name": "Camera",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 150.0,
+					"Z": -300.0
+				}
+			}
+		},
+		{
+			"ID": "dc7e5e614b83518ad06c08b4078bfdc4",
+			"TypeName": "Game.PrototypingBox",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"V": {
+	"Width": 146.0
+},
+			"Name": "PrototypingBox",
+			"Transform": {
+				"Translation": {
+					"X": -56.953704833984378,
+					"Y": 25.0,
+					"Z": 116.17942810058594
+				}
+			}
+		},
+		{
+			"ID": "fae3fe3a443a1466b9452cac789eba0a",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "dc7e5e614b83518ad06c08b4078bfdc4",
+			"Name": "StaticModel",
+			"HideFlags": 5,
+			"Model": "3f0822c24fdb59e6f21acbad51de9f25",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "82c1976647148e45037675a86fa9dbc4",
+			"TypeName": "FlaxEngine.MeshCollider",
+			"ParentID": "dc7e5e614b83518ad06c08b4078bfdc4",
+			"Name": "MeshCollider",
+			"HideFlags": 5,
+			"CollisionData": "50196ea548480f79dd01e5ad68b4e4d3"
+		},
+		{
+			"ID": "10787e294bbbd4207d6d038dcc7bc68c",
+			"TypeName": "Game.PrototypingStairs",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"V": {
+	"Width": 86.0,
+	"Steps": 2
+},
+			"Name": "PrototypingStairs",
+			"Transform": {
+				"Translation": {
+					"X": -199.36627197265626,
+					"Y": 25.0,
+					"Z": 99.51852416992188
+				}
+			}
+		},
+		{
+			"ID": "5e005ac649741b15c0f197978c9715a4",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "10787e294bbbd4207d6d038dcc7bc68c",
+			"Name": "StaticModel",
+			"HideFlags": 5,
+			"Model": "cda4fc064f57b37da857ddbb276683f0",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "d095f57c4199ad00f71fc789e19dfada",
+			"TypeName": "FlaxEngine.MeshCollider",
+			"ParentID": "10787e294bbbd4207d6d038dcc7bc68c",
+			"Name": "MeshCollider",
+			"HideFlags": 5,
+			"CollisionData": "b5492c7a476432b315d333b0734bdab5"
+		},
+		{
+			"ID": "8e1449a344bec3f044f06ba209d15d2a",
+			"TypeName": "Game.PrototypingCylinder",
+			"ParentID": "735142bc41030ba12150e19a6fabd798",
+			"V": {
+	"Radius": 50.0
+},
+			"Name": "PrototypingCylinder",
+			"Transform": {
+				"Translation": {
+					"X": -103.72317504882813,
+					"Y": 24.999984741210939,
+					"Z": -85.22607421875
+				}
+			}
+		},
+		{
+			"ID": "2b1d9d2d41d2d2314c0424b8b4dfe053",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "8e1449a344bec3f044f06ba209d15d2a",
+			"Name": "StaticModel",
+			"HideFlags": 5,
+			"Model": "6f8656e84e09d347635dd2b7ef65994e",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "c763d92042ecd2ea1e6870a85758ce0e",
+			"TypeName": "FlaxEngine.MeshCollider",
+			"ParentID": "8e1449a344bec3f044f06ba209d15d2a",
+			"Name": "MeshCollider",
+			"HideFlags": 5,
+			"CollisionData": "13cbb8304ac279aa5fd5a1bcce8308c0"
+		}
+	]
+}

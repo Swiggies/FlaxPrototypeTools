@@ -11,68 +11,21 @@ namespace Game
     /// BoxGenerator Script.
     /// </summary>
 
-    [ExecuteInEditMode]
-    public class StairGenerator : Script
+    [ActorContextMenu("New/Prototyping/Stairs")]
+    [ActorToolbox("Prototyping")]
+    public class PrototypingStairs : PrototypingActor
     {
         [Limit(1)]
-        public float Width;
+        public float Width = 100;
         [Limit(1)]
-        public float Depth;
+        public float Depth = 100;
         [Limit(1)]
-        public float Height;
+        public float Height = 100;
         [Limit(1)]
-        public int Steps;
-
-        public MaterialBase material;
-        private Model _tempModel;
-        private Mesh mesh;
-        private MeshCollider _meshCollider;
-        private CollisionData _collisionData;
-        private Thread _thread;
-
-        List<Float3> _vertices;
-        List<Float3> _normals;
-        List<int> _triangles;
-        List<Float2> _uvs;
+        public int Steps = 10;
         int triCount;
 
-        List<Color> _colors = new List<Color>
-        {
-            Color.Red,
-            Color.Green,
-            Color.Blue,
-            Color.Yellow,
-        };
-
-        /// <inheritdoc/>
-        public override void OnEnable()
-        {
-            GenerateModel();
-
-            _tempModel = Content.CreateVirtualAsset<Model>();
-            _tempModel.SetupLODs(new[] { 1 });
-            UpdateMesh(_tempModel.LODs[0].Meshes[0]);
-
-            var childModel = Actor.GetOrAddChild<StaticModel>();
-            childModel.HideFlags= HideFlags.HideInHierarchy | HideFlags.DontSelect;
-            childModel.Model = _tempModel;
-            childModel.SetMaterial(0, material);
-        }
-
-        private void UpdateMesh(Mesh mesh)
-        {
-            GenerateModel();
-            mesh.UpdateMesh(_vertices, _triangles, _normals, uv: _uvs);
-            SetupCollision();
-        }
-
-        /// <inheritdoc/>
-        public override void OnDisable()
-        {
-            // Here you can add code that needs to be called when script is disabled (eg. unregister from events)
-        }
-
-        private void GenerateModel()
+        protected override void GenerateModel()
         {
             triCount = 0;
             _triangles = new List<int>();
@@ -228,32 +181,6 @@ namespace Game
                 new Float2(1 * (Width * 0.01f), 1 * (Depth * 0.01f)),
                 new Float2(0, 1 * (Depth * 0.01f)),
             });
-        }
-
-        private void UpdateModel()
-        {
-            //_vertices = GetVertices();
-        }
-
-        private void SetupCollision()
-        {
-            if (_tempModel == null) return;
-            if (_tempModel.IsVirtual)
-            {
-                _collisionData = Content.CreateVirtualAsset<CollisionData>();
-                JobSystem.Dispatch(i => {
-                    _collisionData.CookCollision(CollisionDataType.TriangleMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray());
-                    _meshCollider = Actor.GetOrAddChild<MeshCollider>();
-                    _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-                    _meshCollider.CollisionData = _collisionData;
-                });
-            }
-        }
-
-        /// <inheritdoc/>
-        public override void OnUpdate()
-        {
-            UpdateMesh(_tempModel.LODs[0].Meshes[0]);
         }
     }
 }

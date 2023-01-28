@@ -11,57 +11,19 @@ namespace Game
     /// BoxGenerator Script.
     /// </summary>
 
-    [ExecuteInEditMode]
-    public class CylinderGenerator : Script
+    [ActorContextMenu("New/Prototyping/Cylinder")]
+    [ActorToolbox("Prototyping")]
+    public class PrototypingCylinder : PrototypingActor
     {
         [Limit(1)]
-        public float Radius;
+        public float Radius = 100;
         [Limit(1)]
-        public float Height;
+        public float Height = 100;
         [Limit(3, 36)]
-        public int Sides;
-
-        public MaterialBase material;
-        private Model _tempModel;
-        private Mesh mesh;
+        public int Sides = 8;
         private float _angle;
-        private MeshCollider _meshCollider;
-        private CollisionData _collisionData;
-        private Thread _thread;
 
-        List<Float3> _vertices;
-        List<Float3> _normals;
-        List<int> _triangles;
-        List<Float2> _uvs;
-
-        List<Color> _colors = new List<Color>
-        {
-            Color.Red,
-            Color.Green,
-            Color.Blue,
-            Color.Yellow,
-        };
-
-        /// <inheritdoc/>
-        public override void OnStart()
-        {
-            // Here you can add code that needs to be called when script is created, just before the first game update
-        }
-        
-        /// <inheritdoc/>
-        public override void OnEnable()
-        {
-            _tempModel = Content.CreateVirtualAsset<Model>();
-            _tempModel.SetupLODs(new[] { 1 });
-            UpdateMesh(_tempModel.LODs[0].Meshes[0]);
-
-            var childModel = Actor.GetOrAddChild<StaticModel>();
-            childModel.Model = _tempModel;
-            childModel.SetMaterial(0, material);
-            childModel.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-        }
-
-        private void GenerateCylinder()
+        protected override void GenerateModel()
         {
             _vertices = new List<Float3>();
             _triangles = new List<int>();
@@ -161,40 +123,6 @@ namespace Game
                     _triangles.Add(i);
                 }
             }
-        }
-
-        private void SetupCollision()
-        {
-            if (_tempModel == null) return;
-            if (_tempModel.IsVirtual)
-            {
-                _collisionData = Content.CreateVirtualAsset<CollisionData>();
-                JobSystem.Dispatch(i => {
-                    _collisionData.CookCollision(CollisionDataType.TriangleMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray());
-                    _meshCollider = Actor.GetOrAddChild<MeshCollider>();
-                    _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-                    _meshCollider.CollisionData = _collisionData;
-                });
-            }
-        }
-
-        private void UpdateMesh(Mesh mesh)
-        {
-            GenerateCylinder();
-            mesh.UpdateMesh(_vertices, _triangles, _normals);
-            SetupCollision();
-        }
-
-        /// <inheritdoc/>
-        public override void OnDisable()
-        {
-            // Here you can add code that needs to be called when script is disabled (eg. unregister from events)
-        }
-
-        /// <inheritdoc/>
-        public override void OnUpdate()
-        {
-            UpdateMesh(_tempModel.LODs[0].Meshes[0]);
         }
     }
 }

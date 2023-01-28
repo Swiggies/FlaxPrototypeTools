@@ -8,7 +8,9 @@ namespace Game
     /// BoxGenerator Script.
     /// </summary>
 
-    public class BoxGenActor : Actor
+    [ActorContextMenu("New/Prototyping/Box")]
+    [ActorToolbox("Prototyping")]
+    public class PrototypingBox : PrototypingActor
     {
         [Limit(1)]
         public float Width = 100f;
@@ -17,74 +19,7 @@ namespace Game
         [Limit(1)]
         public float Height = 100f;
 
-        public MaterialBase material;
-        private Model _tempModel;
-        private Mesh mesh;
-        private MeshCollider _meshCollider;
-        private CollisionData _collisionData;
-
-        List<Float3> _vertices;
-        List<Float3> _normals;
-        List<int> _triangles;
-        List<Float2> _uvs;
-
-        List<Color> _colors = new List<Color>
-        {
-            Color.Red,
-            Color.Green,
-            Color.Blue,
-            Color.Yellow,
-        };
-        
-        /// <inheritdoc/>
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            GenerateMesh();
-
-            var model = Content.CreateVirtualAsset<Model>();
-            _tempModel = model;
-            model.SetupLODs(new[] { 1 });
-            UpdateMesh(model.LODs[0].Meshes[0]);
-
-            var childModel = GetOrAddChild<StaticModel>();
-            childModel.Model = model;
-            childModel.SetMaterial(0, material);
-            childModel.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-
-            Scripting.Update += OnUpdate;
-        }
-
-        private void UpdateMesh(Mesh mesh)
-        {
-            GenerateMesh();
-            mesh.UpdateMesh(_vertices, _triangles, _normals, uv: _uvs);
-            SetupCollision();
-        }
-
-        /// <inheritdoc/>
-        public override void OnDisable()
-        {
-            base.OnDisable();
-            Scripting.Update -= OnUpdate;
-        }
-
-        private void SetupCollision()
-        {
-            if (_tempModel == null) return;
-            if (_tempModel.IsVirtual)
-            {
-                _collisionData = Content.CreateVirtualAsset<CollisionData>();
-                JobSystem.Dispatch(i => {
-                    _collisionData.CookCollision(CollisionDataType.TriangleMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray());
-                    _meshCollider = GetOrAddChild<MeshCollider>();
-                    _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-                    _meshCollider.CollisionData = _collisionData;
-                });
-            }
-        }
-
-        public void GenerateMesh()
+        protected override void GenerateModel()
         {
             _vertices = new List<Float3>
             {
@@ -211,12 +146,6 @@ namespace Game
                 new Float2(1 * (Width * 0.01f), 1 * (Depth * 0.01f)),
                 new Float2(0, 1 * (Depth * 0.01f)),
             };
-        }
-
-        /// <inheritdoc/>
-        public void OnUpdate()
-        {
-            UpdateMesh(_tempModel.LODs[0].Meshes[0]);
         }
     }
 }
