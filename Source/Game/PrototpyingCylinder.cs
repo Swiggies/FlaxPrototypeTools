@@ -15,13 +15,37 @@ namespace Game
     [ActorToolbox("Prototyping")]
     public class PrototypingCylinder : PrototypingActor
     {
-        [Limit(1)]
-        public float Radius = 100;
-        [Limit(1)]
-        public float Height = 100;
-        [Limit(3, 36)]
-        public int Sides = 8;
+        private float radius = 100;
+        private float height = 100;
+        private int sides = 8;
         private float _angle;
+
+        [Limit(1)]
+        [NoSerialize]
+        public float Radius { get => radius; set
+            {
+                radius = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
+
+        [Limit(1)]
+        [NoSerialize]
+        public float Height { get => height; set
+            {
+                height = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
+
+        [Limit(3, 36)]
+        [NoSerialize]
+        public int Sides { get => sides; set
+            {
+                sides = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
 
         protected override void GenerateModel()
         {

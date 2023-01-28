@@ -4,73 +4,36 @@ using FlaxEngine;
 
 namespace Game
 {
-    /// <summary>
-    /// BoxGenerator Script.
-    /// </summary>
-
-    [ActorContextMenu("New/Prototyping/Box")]
+    [ActorContextMenu("New/Prototyping/Ramp")]
     [ActorToolbox("Prototyping")]
-    public class PrototypingBox : PrototypingActor
+    public class PrototypingRamp : PrototypingActor
     {
-        [Serialize]
-        private float _width = 100f;
-        [Serialize]
-        private float _depth = 100f;
-        [Serialize]
-        private float _height = 100f;
-
         [Limit(1)]
-        [NoSerialize]
-        public float Width { get => _width; set 
-            {
-                _width = value;
-                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
-            }
-        }
-
+        private float Width = 100f;
         [Limit(1)]
-        [NoSerialize]
-        public float Depth { get => _depth; set
-            {
-                _depth = value;
-                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
-            }
-        }
-
+        public float Depth = 100f;
         [Limit(1)]
-        [NoSerialize]
-        public float Height { get => _height; set
-            {
-                _height = value;
-                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
-            }
-        }
+        public float Height = 100f;
+
+
 
         protected override void GenerateModel()
         {
             _vertices = new List<Float3>
             {
-                new Float3(0, 0, 0),
-                new Float3(0, Height, 0),
-                new Float3(Width, Height, 0),
-                new Float3(Width, 0, 0),
-
                 new Float3(Width, 0, Depth),
                 new Float3(Width, Height, Depth),
                 new Float3(0, Height, Depth),
                 new Float3(0, 0, Depth),
 
                 new Float3(Width, 0, 0),
-                new Float3(Width, Height, 0),
                 new Float3(Width, Height, Depth),
                 new Float3(Width, 0, Depth),
 
                 new Float3(0, 0, Depth),
                 new Float3(0, Height, Depth),
-                new Float3(0, Height, 0),
                 new Float3(0, 0, 0),
 
-                new Float3(0, Height, 0),
                 new Float3(0, Height, Depth),
                 new Float3(Width, Height, Depth),
                 new Float3(Width, Height, 0),

@@ -100,7 +100,9 @@
 			"TypeName": "Game.PrototypingBox",
 			"ParentID": "735142bc41030ba12150e19a6fabd798",
 			"V": {
-	"Width": 146.0
+	"_width": 254.0,
+	"_depth": 131.0,
+	"_height": 110.0
 },
 			"Name": "PrototypingBox",
 			"Transform": {
@@ -117,7 +119,7 @@
 			"ParentID": "dc7e5e614b83518ad06c08b4078bfdc4",
 			"Name": "StaticModel",
 			"HideFlags": 5,
-			"Model": "3f0822c24fdb59e6f21acbad51de9f25",
+			"Model": "d688bc3a4db9b10180ac6592f2edd5ac",
 			"Buffer": {
 				"Entries": [
 					{
@@ -135,15 +137,15 @@
 			"ParentID": "dc7e5e614b83518ad06c08b4078bfdc4",
 			"Name": "MeshCollider",
 			"HideFlags": 5,
-			"CollisionData": "50196ea548480f79dd01e5ad68b4e4d3"
+			"CollisionData": "eef7e7ed454faf1d7dcb6e92817eb728"
 		},
 		{
 			"ID": "10787e294bbbd4207d6d038dcc7bc68c",
 			"TypeName": "Game.PrototypingStairs",
 			"ParentID": "735142bc41030ba12150e19a6fabd798",
 			"V": {
-	"Width": 86.0,
-	"Steps": 2
+	"Width": 91.0,
+	"Steps": 3
 },
 			"Name": "PrototypingStairs",
 			"Transform": {
@@ -160,7 +162,7 @@
 			"ParentID": "10787e294bbbd4207d6d038dcc7bc68c",
 			"Name": "StaticModel",
 			"HideFlags": 5,
-			"Model": "cda4fc064f57b37da857ddbb276683f0",
+			"Model": "c24a536c4d8e829b97f43387deece162",
 			"Buffer": {
 				"Entries": [
 					{
@@ -178,7 +180,7 @@
 			"ParentID": "10787e294bbbd4207d6d038dcc7bc68c",
 			"Name": "MeshCollider",
 			"HideFlags": 5,
-			"CollisionData": "b5492c7a476432b315d333b0734bdab5"
+			"CollisionData": "e75e7a244deeaa71c46287b516211f56"
 		},
 		{
 			"ID": "8e1449a344bec3f044f06ba209d15d2a",
@@ -202,7 +204,7 @@
 			"ParentID": "8e1449a344bec3f044f06ba209d15d2a",
 			"Name": "StaticModel",
 			"HideFlags": 5,
-			"Model": "6f8656e84e09d347635dd2b7ef65994e",
+			"Model": "08c5ba61465a9c0181556f8bc0013581",
 			"Buffer": {
 				"Entries": [
 					{
@@ -220,7 +222,7 @@
 			"ParentID": "8e1449a344bec3f044f06ba209d15d2a",
 			"Name": "MeshCollider",
 			"HideFlags": 5,
-			"CollisionData": "13cbb8304ac279aa5fd5a1bcce8308c0"
+			"CollisionData": "dd7305c14fe9b7d195ff5cb781dbb492"
 		}
 	]
 }

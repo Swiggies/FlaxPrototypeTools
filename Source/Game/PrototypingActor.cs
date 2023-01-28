@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using FlaxEngine;
 
 namespace Game
@@ -21,8 +22,7 @@ namespace Game
 
         public override void OnEnable()
         {
-            GenerateModel();
-
+            base.OnEnable();
             _tempModel = Content.CreateVirtualAsset<Model>();
             _tempModel.SetupLODs(new[] { 1 });
             UpdateMesh(_tempModel.LODs[0].Meshes[0]);
@@ -31,16 +31,6 @@ namespace Game
             childModel.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
             childModel.Model = _tempModel;
             childModel.SetMaterial(0, material);
-#if FLAX_EDITOR
-            Scripting.Update += OnUpdate;
-#endif
-        }
-
-        public override void OnDisable()
-        {
-#if FLAX_EDITOR
-            Scripting.Update -= OnUpdate;
-#endif
         }
 
         protected virtual void GenerateModel() { }
@@ -67,7 +57,8 @@ namespace Game
             }
         }
 
-        private void OnUpdate()
+        [OnSerializing]
+        internal void OnSerializing(StreamingContext context)
         {
             UpdateMesh(_tempModel.LODs[0].Meshes[0]);
         }

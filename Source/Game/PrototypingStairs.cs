@@ -15,16 +15,55 @@ namespace Game
     [ActorToolbox("Prototyping")]
     public class PrototypingStairs : PrototypingActor
     {
-        [Limit(1)]
-        public float Width = 100;
-        [Limit(1)]
-        public float Depth = 100;
-        [Limit(1)]
-        public float Height = 100;
-        [Limit(1)]
-        public int Steps = 10;
+        [Serialize] private float _width = 100;  
+        [Serialize] private float _depth = 100;
+        [Serialize] private float _height = 100;
+        [Serialize] private int _steps = 10;
         int triCount;
 
+        [Limit(1)]
+        [NoSerialize]
+        public float Width
+        {
+            get => _width; set
+            {
+                _width = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
+
+        [Limit(1)]
+        [NoSerialize]
+        public float Depth
+        {
+            get => _depth; set
+            {
+                _depth = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
+
+        [Limit(1)]
+        [NoSerialize]
+        public float Height
+        {
+            get => _height; set
+            {
+                _height = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
+
+        [Limit(2)]
+        [NoSerialize]
+        public int Steps
+        {
+            get => _steps; set
+            {
+                _steps = value;
+                UpdateMesh(_tempModel.LODs[0].Meshes[0]);
+            }
+        }
         protected override void GenerateModel()
         {
             triCount = 0;
