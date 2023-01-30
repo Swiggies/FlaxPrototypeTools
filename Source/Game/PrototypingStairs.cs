@@ -17,8 +17,8 @@ namespace Game
     {
         [Serialize] private float _width = 100;  
         [Serialize] private float _depth = 100;
-        [Serialize] private float _height = 100;
-        [Serialize] private int _steps = 10;
+        [Serialize] private float height = 100;
+        [Serialize] private int steps = 10;
         int triCount;
 
         [Limit(1)]
@@ -47,9 +47,9 @@ namespace Game
         [NoSerialize]
         public float Height
         {
-            get => _height; set
+            get => height; set
             {
-                _height = value;
+                height = value;
                 UpdateMesh(_tempModel.LODs[0].Meshes[0]);
             }
         }
@@ -58,9 +58,9 @@ namespace Game
         [NoSerialize]
         public int Steps
         {
-            get => _steps; set
+            get => steps; set
             {
-                _steps = value;
+                steps = value;
                 UpdateMesh(_tempModel.LODs[0].Meshes[0]);
             }
         }
@@ -83,7 +83,7 @@ namespace Game
             float heightPercent = ((float)step / (float)Steps);
             float prevHeightPercent = (step - 1f) / (float)Steps;
 
-            return new List<Float3>
+            var verts = new List<Float3>
             {
                 // Back
                 new Float3(0, 0, Depth * prevHeightPercent),
@@ -110,10 +110,10 @@ namespace Game
                 new Float3(0, 0, Depth * prevHeightPercent),
 
                 // Top
-                new Float3(0, Height * heightPercent, Depth * prevHeightPercent),
                 new Float3(0, Height * heightPercent, Depth * heightPercent),
                 new Float3(Width, Height * heightPercent, Depth * heightPercent),
                 new Float3(Width, Height * heightPercent, Depth * prevHeightPercent),
+                new Float3(0, Height * heightPercent, Depth * prevHeightPercent),
 
                 // Bottom
                 new Float3(0, 0, Depth * prevHeightPercent),
@@ -121,10 +121,13 @@ namespace Game
                 new Float3(Width, 0, Depth * heightPercent),
                 new Float3(0, 0, Depth * heightPercent),
             };
+
+            return verts;
         }
 
         private void GenerateStep(int step, int startIndex)
         {
+            float heightPercent = ((float)step / (float)Steps);
             _vertices.AddRange(GetVertices(step));
 
             _triangles.AddRange(new List<int>
@@ -185,34 +188,34 @@ namespace Game
             _uvs.AddRange(new List<Float2>
             {
                 // Back
+                new Float2(0, 1 * (Height * 0.01f) * heightPercent),
                 new Float2(0, 0),
-                new Float2(0, 1 * (Height * 0.01f)),
-                new Float2(1 * (Width * 0.01f), 1 * (Height * 0.01f)),
                 new Float2(1 * (Width * 0.01f), 0),
+                new Float2(1 * (Width * 0.01f), 1 * (Height * 0.01f) * heightPercent),
 
                 // Front
-                new Float2(1 * (Width * 0.01f), 0),
-                new Float2(1 * (Width * 0.01f), 1 * (Height * 0.01f)),
-                new Float2(0, 1 * (Height * 0.01f)),
+                new Float2(0, 1 * (Height * 0.01f) * heightPercent),
                 new Float2(0, 0),
+                new Float2(1 * (Width * 0.01f), 0),
+                new Float2(1 * (Width * 0.01f), 1 * (Height * 0.01f) * heightPercent),
 
                 // Right
-                new Float2(0, 0),
-                new Float2(0, 1 * (Height * 0.01f)),
-                new Float2(1 * (Depth * 0.01f), 1 * (Height * 0.01f)),
-                new Float2(1 * (Depth * 0.01f), 0),
+                new Float2(0, 1 * (Height * 0.01f) * heightPercent),
+                new Float2(0f, 0),
+                new Float2(1 * (Depth * 0.01f) * heightPercent / step, 0),
+                new Float2(1 * (Depth * 0.01f) * heightPercent / step, 1 * (Height * 0.01f) * heightPercent),
 
                 // Left
-                new Float2(1 * (Depth * 0.01f), 0),
-                new Float2(1 * (Depth * 0.01f), 1 * (Height * 0.01f)),
-                new Float2(0, 1 * (Height * 0.01f)),
+                new Float2(0, 1 * (Height * 0.01f) * heightPercent),
                 new Float2(0, 0),
+                new Float2(1 * (Depth * 0.01f) * heightPercent / step, 0),
+                new Float2(1 * (Depth * 0.01f) * heightPercent / step, 1 * (Height * 0.01f) * heightPercent),
 
                 // Up
                 new Float2(0, 0),
-                new Float2(0, 1 * (Depth * 0.01f)),
-                new Float2(1 * (Width * 0.01f), 1 * (Depth * 0.01f)),
                 new Float2(1 * (Width * 0.01f), 0),
+                new Float2(1 * (Width * 0.01f), 1 *(Depth * 0.01f) * heightPercent / step),
+                new Float2(0, 1 * (Depth * 0.01f) * heightPercent / step),
 
                 // Down
                 new Float2(0, 0),
