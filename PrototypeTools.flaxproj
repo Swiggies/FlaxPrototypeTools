@@ -1,6 +1,6 @@
 {
-	"Name": "FlaxPrototypingTools",
-	"Version": "1.0",
+	"Name": "PrototypeTools",
+	"Version": "0.1",
 	"Company": "My Company",
 	"Copyright": "",
 	"GameTarget": "PrototypeToolsTarget",
