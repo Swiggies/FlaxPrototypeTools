@@ -12,7 +12,6 @@ namespace PrototypeTools
     public class PrototypingActor : Actor
     {
         [Serialize] private MaterialBase _material;
-        [Serialize] public Color _mainColor;
         protected Model _tempModel;
         protected MeshCollider _meshCollider;
         protected CollisionData _collisionData;
@@ -69,15 +68,6 @@ namespace PrototypeTools
         }
 
         protected virtual void GenerateModel() { }
-
-        protected virtual void SetColor()
-        {
-            _colors = new List<Color32>();
-            foreach (var v in _vertices)
-            {
-                _colors.Add(_mainColor);
-            }
-        }
 
         protected virtual void UpdateMesh(Mesh mesh)
         {
