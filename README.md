@@ -14,7 +14,7 @@ I plan on adding more as they are needed but I felt that these were the basics o
 
 ## Installation
 
-1. Clone this repo into `<game-project>\Plugins\PrototypeTools`
+1. Clone this repo into `<game-project>\Plugins\FlaxPrototypeTools`
 
 2. Add reference to the PrototypeTools project in your game by modyfying your games project file (`<game-project>.flaxproj`) as follows:
 
