@@ -1,7 +1,7 @@
 using Flax.Build;
 using Flax.Build.NativeCpp;
 
-public class Game : GameModule
+public class PrototypeTools : GameModule
 {
     /// <inheritdoc />
     public override void Init()

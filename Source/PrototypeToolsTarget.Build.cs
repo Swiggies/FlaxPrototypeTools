@@ -1,6 +1,6 @@
 using Flax.Build;
 
-public class GameTarget : GameProjectTarget
+public class PrototypeToolsTarget : GameProjectTarget
 {
     /// <inheritdoc />
     public override void Init()
@@ -8,6 +8,6 @@ public class GameTarget : GameProjectTarget
         base.Init();
 
         // Reference the modules for game
-        Modules.Add("Game");
+        Modules.Add("PrototypeTools");
     }
 }

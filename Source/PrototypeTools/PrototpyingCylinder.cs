@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FlaxEngine;
 
-namespace Game
+namespace PrototypeTools
 {
     /// <summary>
     /// BoxGenerator Script.

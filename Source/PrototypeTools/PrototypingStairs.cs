@@ -5,7 +5,7 @@ using FlaxEngine;
 using System.Linq;
 using System.Threading;
 
-namespace Game
+namespace PrototypeTools
 {
     /// <summary>
     /// BoxGenerator Script.
@@ -54,7 +54,7 @@ namespace Game
             }
         }
 
-        [Limit(2)]
+        [Limit(2, 255)]
         [NoSerialize]
         public int Steps
         {

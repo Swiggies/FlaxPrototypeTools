@@ -4,7 +4,7 @@ using FlaxEditor.CustomEditors;
 using FlaxEditor.CustomEditors.Editors;
 using FlaxEngine;
 
-namespace Game
+namespace PrototypeTools
 {
     [ActorContextMenu("New/Prototyping/Ramp")]
     [ActorToolbox("Prototyping")]

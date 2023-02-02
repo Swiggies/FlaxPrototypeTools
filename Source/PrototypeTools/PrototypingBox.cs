@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FlaxEngine;
 
-namespace Game
+namespace PrototypeTools
 {
     /// <summary>
     /// BoxGenerator Script.
