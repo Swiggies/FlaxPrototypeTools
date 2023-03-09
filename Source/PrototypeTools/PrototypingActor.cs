@@ -36,7 +36,6 @@ namespace PrototypeTools
         public override void OnEnable()
         {
             base.OnEnable();
-            Debug.Log(_needsBaking);
             _tempModel = Content.CreateVirtualAsset<Model>();
             _tempModel.SetupLODs(new[] { 1 });
             UpdateMesh(_tempModel.LODs[0].Meshes[0]);
