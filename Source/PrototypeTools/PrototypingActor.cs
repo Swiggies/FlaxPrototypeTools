@@ -23,7 +23,7 @@ namespace PrototypeTools
         protected List<Color32> _colors;
 
         private float _timer = 0f;
-        private bool _needsBaking = true;
+        [Serialize] private bool _needsBaking = false;
 
         [NoSerialize]
         public MaterialBase Material { get => _material; set
@@ -36,6 +36,7 @@ namespace PrototypeTools
         public override void OnEnable()
         {
             base.OnEnable();
+            Debug.Log(_needsBaking);
             _tempModel = Content.CreateVirtualAsset<Model>();
             _tempModel.SetupLODs(new[] { 1 });
             UpdateMesh(_tempModel.LODs[0].Meshes[0]);
@@ -73,8 +74,6 @@ namespace PrototypeTools
         {
             GenerateModel();
             mesh.UpdateMesh(_vertices, _triangles, _normals, uv: _uvs, colors: _colors);
-            BakeCollisionSDF();
-
             _needsBaking = true;
             _timer = 0.0f;
         }
