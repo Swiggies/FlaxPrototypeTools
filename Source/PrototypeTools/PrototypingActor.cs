@@ -48,13 +48,13 @@ namespace PrototypeTools
             staticModel.Model = _tempModel;
             staticModel.SetMaterial(0, _material);
 
-            Scripting.Update += UpdateTimer;
+            //Scripting.Update += UpdateTimer;
         }
 
         public override void OnDisable()
         {
             base.OnDisable();
-            Scripting.Update -= UpdateTimer;
+            //Scripting.Update -= UpdateTimer;
         }
 
         private void UpdateTimer()
@@ -63,7 +63,6 @@ namespace PrototypeTools
             if(_timer >= 1.0f && _needsBaking)
             {
                 _needsBaking = false;
-                BakeCollisionSDF();
             }
         }
 
@@ -73,6 +72,7 @@ namespace PrototypeTools
         {
             GenerateModel();
             mesh.UpdateMesh(_vertices, _triangles, _normals, uv: _uvs, colors: _colors);
+            BakeCollisionSDF();
             _needsBaking = true;
             _timer = 0.0f;
         }
@@ -95,8 +95,8 @@ namespace PrototypeTools
                     {
                         Debug.LogError("Failed to generate colliders.");
                     }
-                    if(_tempModel.GenerateSDF())
-                        Debug.LogError("Failed to generate SDF.");
+                    //if(_tempModel.GenerateSDF())
+                    //    Debug.LogError("Failed to generate SDF.");
                 });
             }
         }
