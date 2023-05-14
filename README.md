@@ -12,6 +12,8 @@ Currently it has:
 
 I plan on adding more as they are needed but I felt that these were the basics of getting any basic level blocked out.
 
+There are a few limiations due to the geometry being procedural such as no light baking and no SDFs/DDGI support. I have ideas to fix this in the future but it's not a priority.
+
 ## Installation
 
 1. Clone this repo into `<game-project>\Plugins\FlaxPrototypeTools`
@@ -31,6 +33,6 @@ I plan on adding more as they are needed but I felt that these were the basics o
 ]
 ```
 
-3. Restart Editor.
+3. Restart/Start Editor
 
-4. Try it out!
+4. Try it out! Drag in a prototype actor from the toolbox.
