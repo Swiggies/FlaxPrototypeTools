@@ -8,6 +8,7 @@ Currently it has:
 - Ramps
 - Linear Stairs
 
+![image](https://github.com/Swiggies/FlaxPrototypeTools/assets/38583668/a2433b5d-14a2-4afa-a5fd-61af6bc13532)
 ![flaxprototype](https://user-images.githubusercontent.com/38583668/216321377-95a5c424-c61f-4d03-9464-99ead2f84a74.jpg)
 
 I plan on adding more as they are needed but I felt that these were the basics of getting any basic level blocked out.
