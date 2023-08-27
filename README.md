@@ -8,9 +8,12 @@ Currently it has:
 - Ramps
 - Linear Stairs
 
+![image](https://github.com/Swiggies/FlaxPrototypeTools/assets/38583668/a2433b5d-14a2-4afa-a5fd-61af6bc13532)
 ![flaxprototype](https://user-images.githubusercontent.com/38583668/216321377-95a5c424-c61f-4d03-9464-99ead2f84a74.jpg)
 
 I plan on adding more as they are needed but I felt that these were the basics of getting any basic level blocked out.
+
+There are a few limiations due to the geometry being procedural such as no light baking and no SDFs/DDGI support. I have ideas to fix this in the future but it's not a priority.
 
 ## Installation
 
@@ -31,6 +34,6 @@ I plan on adding more as they are needed but I felt that these were the basics o
 ]
 ```
 
-3. Restart Editor.
+3. Restart/Start Editor
 
-4. Try it out!
+4. Try it out! Drag in a prototype actor from the toolbox.
