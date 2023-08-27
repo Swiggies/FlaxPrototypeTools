@@ -1,0 +1,18 @@
+{
+  "settings": {
+    "typescript.tsc.autoDetect": "off",
+    "npm.autoDetect": "off",
+    "gulp.autoDetect": "off",
+    "jake.autoDetect": "off",
+    "grunt.autoDetect": "off",
+    "omnisharp.useModernNet": true,
+    "dotnet.defaultSolution": "PrototypeTools.sln",
+    "editor.formatOnType": true,
+    "editor.trimAutoWhitespace": true
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ]
+}

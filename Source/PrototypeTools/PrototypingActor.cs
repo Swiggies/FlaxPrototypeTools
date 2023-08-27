@@ -11,7 +11,7 @@ namespace PrototypeTools
     /// </summary>
     public class PrototypingActor : Actor
     {
-        [Serialize] private MaterialBase _material;
+        [Serialize, HideInEditor] public Material _material;
         protected Model _tempModel;
         protected MeshCollider _meshCollider;
         protected CollisionData _collisionData;
@@ -21,12 +21,15 @@ namespace PrototypeTools
         protected List<int> _triangles;
         protected List<Float2> _uvs;
         protected List<Color32> _colors;
-
         private float _timer = 0f;
+
         [Serialize] private bool _needsBaking = false;
 
         [NoSerialize]
-        public MaterialBase Material { get => _material; set
+        public Material ModelMaterial
+        {
+            get => _material;
+            set
             {
                 _material = value;
                 GetOrAddChild<StaticModel>().SetMaterial(0, _material);
@@ -47,7 +50,7 @@ namespace PrototypeTools
             staticModel.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
             staticModel.Model = _tempModel;
             staticModel.SetMaterial(0, _material);
-
+            Debug.Log(_material);
             //Scripting.Update += UpdateTimer;
         }
 
@@ -60,7 +63,7 @@ namespace PrototypeTools
         private void UpdateTimer()
         {
             _timer += Time.UnscaledDeltaTime;
-            if(_timer >= 1.0f && _needsBaking)
+            if (_timer >= 1.0f && _needsBaking)
             {
                 _needsBaking = false;
             }
@@ -85,7 +88,7 @@ namespace PrototypeTools
                 _collisionData = Content.CreateVirtualAsset<CollisionData>();
                 JobSystem.Dispatch(i =>
                 {
-                    if (!_collisionData.CookCollision(CollisionDataType.TriangleMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray()))
+                    if (!_collisionData.CookCollision(CollisionDataType.ConvexMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray()))
                     {
                         _meshCollider = GetOrAddChild<MeshCollider>();
                         _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;

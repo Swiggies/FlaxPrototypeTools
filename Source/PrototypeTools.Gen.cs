@@ -2,6 +2,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("PrototypeTools")]
 [assembly: AssemblyDescription("")]
@@ -15,3 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("63aa010c-010c-63aa-c294-453405150000")]
 [assembly: AssemblyVersion("0.1")]
 [assembly: AssemblyFileVersion("0.1")]
+[assembly: DisableRuntimeMarshalling]
