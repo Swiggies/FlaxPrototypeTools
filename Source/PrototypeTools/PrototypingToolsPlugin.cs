@@ -16,6 +16,8 @@ namespace PrototypeTools
             _description = new PluginDescription
             {
                 Name = "Prototyping Tools",
+                Author = "Swiggies",
+                RepositoryUrl = "https://github.com/Swiggies/FlaxPrototypeTools/",
             };
         }
 

@@ -12,9 +12,9 @@ namespace PrototypeTools
     public class PrototypingActor : Actor
     {
         [Serialize, HideInEditor] public Material _material;
-        protected Model _tempModel;
-        protected MeshCollider _meshCollider;
-        protected CollisionData _collisionData;
+        [NoSerialize] protected Model _tempModel;
+        [NoSerialize] protected MeshCollider _meshCollider;
+        [NoSerialize] protected CollisionData _collisionData;
 
         protected List<Float3> _vertices;
         protected List<Float3> _normals;
@@ -50,12 +50,14 @@ namespace PrototypeTools
             staticModel.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
             staticModel.Model = _tempModel;
             staticModel.SetMaterial(0, _material);
-            Debug.Log(_material);
             //Scripting.Update += UpdateTimer;
         }
 
         public override void OnDisable()
         {
+            Destroy(ref _tempModel);
+            Destroy(ref _collisionData);
+
             base.OnDisable();
             //Scripting.Update -= UpdateTimer;
         }
@@ -86,13 +88,12 @@ namespace PrototypeTools
             if (_tempModel.IsVirtual)
             {
                 _collisionData = Content.CreateVirtualAsset<CollisionData>();
-                JobSystem.Dispatch(i =>
+                _meshCollider = GetOrAddChild<MeshCollider>();
+                _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
+                var label = JobSystem.Dispatch(i =>
                 {
                     if (!_collisionData.CookCollision(CollisionDataType.ConvexMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray()))
                     {
-                        _meshCollider = GetOrAddChild<MeshCollider>();
-                        _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
-                        _meshCollider.CollisionData = _collisionData;
                     }
                     else
                     {
@@ -101,6 +102,8 @@ namespace PrototypeTools
                     //if(_tempModel.GenerateSDF())
                     //    Debug.LogError("Failed to generate SDF.");
                 });
+                JobSystem.Wait(label);
+                _meshCollider.CollisionData = _collisionData;
             }
         }
     }

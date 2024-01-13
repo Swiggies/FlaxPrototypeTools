@@ -1,0 +1,155 @@
+{
+	"ID": "1a4932a145ee68db7c1058a42c466e7e",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6407,
+	"Data": [
+		{
+			"ID": "1a4932a145ee68db7c1058a42c466e7e",
+			"TypeName": "FlaxEngine.Scene",
+			"LightmapSettings": {
+				"IndirectLightingIntensity": 1.0,
+				"GlobalObjectsScale": 1.0,
+				"ChartsPadding": 3,
+				"AtlasSize": 1024,
+				"BounceCount": 1,
+				"CompressLightmaps": true,
+				"UseGeometryWithNoMaterials": true,
+				"Quality": 10
+			}
+		},
+		{
+			"ID": "bc5e6dc64b99c6525c05d79f3fcfecaa",
+			"TypeName": "FlaxEngine.DirectionalLight",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"Name": "Sun",
+			"Transform": {
+				"Translation": {
+					"X": 40.0,
+					"Y": 160.0,
+					"Z": 0.0
+				},
+				"Orientation": {
+					"X": 0.3826834559440613,
+					"Y": 0.0,
+					"Z": 0.0,
+					"W": 0.9238795042037964
+				}
+			}
+		},
+		{
+			"ID": "6eb6e00c44dd652d33f6b7bcdc0671d0",
+			"TypeName": "FlaxEngine.Sky",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"Name": "Sky",
+			"Transform": {
+				"Translation": {
+					"X": 40.0,
+					"Y": 150.0,
+					"Z": 0.0
+				}
+			},
+			"Sun": "bc5e6dc64b99c6525c05d79f3fcfecaa"
+		},
+		{
+			"ID": "031c89694ec031c7e79ff49a753e4887",
+			"TypeName": "FlaxEngine.SkyLight",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"Name": "SkyLight",
+			"Brightness": 2.5,
+			"CustomTexture": "c54410104ff39427bc11e5bc761d66b0"
+		},
+		{
+			"ID": "6f83e7b34f27466678059eb2f3dd1a36",
+			"TypeName": "FlaxEngine.Camera",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"Name": "Camera",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 150.0,
+					"Z": -300.0
+				}
+			}
+		},
+		{
+			"ID": "abc0ac3f4573049cf75746ac8c29f803",
+			"TypeName": "PrototypeTools.PrototypingBox",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"V": {
+	"_width": 500.0,
+	"_depth": 500.0
+},
+			"Name": "PrototypingBox",
+			"Transform": {
+				"Translation": {
+					"X": -200.0,
+					"Y": 0.0,
+					"Z": -170.0
+				}
+			}
+		},
+		{
+			"ID": "172ec0d543150e4c6dd8568e089bfc26",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "abc0ac3f4573049cf75746ac8c29f803",
+			"Name": "StaticModel",
+			"HideFlags": 5,
+			"Model": "e8c11d4a4cba890f7242a08e415e8d64",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		},
+		{
+			"ID": "068a350e4503453d9f16c4af7f7564f2",
+			"TypeName": "FlaxEngine.MeshCollider",
+			"ParentID": "abc0ac3f4573049cf75746ac8c29f803",
+			"Name": "MeshCollider",
+			"HideFlags": 5,
+			"CollisionData": "db5612714de6ade7511972b4c68160d9"
+		},
+		{
+			"ID": "d7bf22794b21a8e5a7df86b52c68498b",
+			"TypeName": "FlaxEngine.RigidBody",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"Name": "RigidBody",
+			"Transform": {
+				"Translation": {
+					"X": 0.0,
+					"Y": 250.0,
+					"Z": 0.0
+				}
+			},
+			"Mass": 1000.0000610351563
+		},
+		{
+			"ID": "d6904047450102ae98226aaa6bb4409f",
+			"TypeName": "FlaxEngine.BoxCollider",
+			"ParentID": "d7bf22794b21a8e5a7df86b52c68498b",
+			"Name": "BoxCollider"
+		},
+		{
+			"ID": "3bc295994b94d2aa5b043899cc861f36",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "d7bf22794b21a8e5a7df86b52c68498b",
+			"Name": "Cube",
+			"Model": "b43f0f8f4aaba3f3156896a5a22ba493",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
+		}
+	]
+}
