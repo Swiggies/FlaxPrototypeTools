@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using FlaxEngine;
-using System.Linq;
-using System.Threading;
 
 namespace PrototypeTools
 {

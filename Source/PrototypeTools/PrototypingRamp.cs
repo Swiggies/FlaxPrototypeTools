@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlaxEditor.CustomEditors;
-using FlaxEditor.CustomEditors.Editors;
 using FlaxEngine;
 
 namespace PrototypeTools

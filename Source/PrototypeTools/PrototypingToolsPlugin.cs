@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using FlaxEngine;
-using FlaxEditor;
-using System.Collections.Concurrent;
 
 namespace PrototypeTools
 {
     /// <summary>
-    /// PrototypToolsPlugin Script.
+    /// PrototypeToolsPlugin Script.
     /// </summary>
-    public class PrototypingToolsPlugin : EditorPlugin
+    public class PrototypingToolsPlugin : GamePlugin
     {
         public PrototypingToolsPlugin()
         {
@@ -17,18 +15,10 @@ namespace PrototypeTools
             {
                 Name = "Prototyping Tools",
                 Author = "Swiggies",
+                Category = "Other",
+                Description = "Easily editable whiteboxing tools.",
                 RepositoryUrl = "https://github.com/Swiggies/FlaxPrototypeTools/",
             };
-        }
-
-        public override void DeinitializeEditor()
-        {
-            base.DeinitializeEditor();
-        }
-
-        public override void InitializeEditor()
-        {
-            base.InitializeEditor();
         }
     }
 }

@@ -150,6 +150,46 @@
 					}
 				]
 			}
+		},
+		{
+			"ID": "968a40334c96929e2ed92fb2900706b4",
+			"TypeName": "PrototypeTools.PrototypingBox",
+			"ParentID": "1a4932a145ee68db7c1058a42c466e7e",
+			"V": {},
+			"Name": "PrototypingBox 0",
+			"Transform": {
+				"Translation": {
+					"X": 80.0,
+					"Y": 99.0,
+					"Z": -75.0
+				}
+			}
+		},
+		{
+			"ID": "e4db4f554dfc7267c50acab62e0e741c",
+			"TypeName": "FlaxEngine.MeshCollider",
+			"ParentID": "968a40334c96929e2ed92fb2900706b4",
+			"Name": "MeshCollider",
+			"HideFlags": 5,
+			"CollisionData": "a0f236da4caed469c188dc974efa7f9d"
+		},
+		{
+			"ID": "7877264a4654843bdd1bfba275a269b2",
+			"TypeName": "FlaxEngine.StaticModel",
+			"ParentID": "968a40334c96929e2ed92fb2900706b4",
+			"Name": "StaticModel",
+			"HideFlags": 5,
+			"Model": "aa7b419e43776bfd86c8d09d09b2a64f",
+			"Buffer": {
+				"Entries": [
+					{
+						"Material": "00000000000000000000000000000000",
+						"ShadowsMode": 3,
+						"Visible": true,
+						"ReceiveDecals": true
+					}
+				]
+			}
 		}
 	]
 }
