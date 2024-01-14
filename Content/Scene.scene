@@ -94,7 +94,7 @@
 			"ParentID": "abc0ac3f4573049cf75746ac8c29f803",
 			"Name": "StaticModel",
 			"HideFlags": 5,
-			"Model": "e8c11d4a4cba890f7242a08e415e8d64",
+			"Model": "dbd65300489b93cc008d50a7e2ae3555",
 			"Buffer": {
 				"Entries": [
 					{
@@ -112,7 +112,7 @@
 			"ParentID": "abc0ac3f4573049cf75746ac8c29f803",
 			"Name": "MeshCollider",
 			"HideFlags": 5,
-			"CollisionData": "db5612714de6ade7511972b4c68160d9"
+			"CollisionData": "62e1be7d46d867cdf700dc9150388ecf"
 		},
 		{
 			"ID": "d7bf22794b21a8e5a7df86b52c68498b",

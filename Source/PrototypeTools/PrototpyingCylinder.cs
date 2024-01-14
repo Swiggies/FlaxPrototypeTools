@@ -94,10 +94,12 @@ namespace PrototypeTools
                 dir2 = (_vertices[j + 1] - _vertices[j + 3]).Normalized;
                 _normals.Add(Vector3.Cross(dir1, dir2));
 
+                float vDist = Vector3.Distance(_vertices[j], _vertices[j + 2]);
+
                 _uvs.Add(new Float2(0, 0));
                 _uvs.Add(new Float2(0, Height * 0.01f));
-                _uvs.Add(new Float2(1, 0));
-                _uvs.Add(new Float2(1, Height * 0.01f));
+                _uvs.Add(new Float2(vDist * 0.01f, 0));
+                _uvs.Add(new Float2(vDist * 0.01f, Height * 0.01f));
             }
             MakeCircle(true);
             MakeCircle(false);
@@ -117,11 +119,11 @@ namespace PrototypeTools
                 Float3 pos = new Float3(x, y, z);
                 _vertices.Add(pos);
                 _normals.Add(normal);
-                _uvs.Add(new Float2(0, 0));
+                _uvs.Add(new Float2((0.5f + x) / 100, (0.5f + z) / 100));
             }
             _vertices.Add(new Float3(0, height, 0));
             _normals.Add(normal);
-            _uvs.Add(Float2.One * (Radius * 0.01f));
+            _uvs.Add(Float2.Zero);
 
             if (top)
             {
