@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "PrototypeTools": {
+      "commandName": "Executable",
+      "workingDirectory": "D:/Projects/Flax/Prototyping Tools Update",
+      "executablePath": "C:/Program Files (x86)/Flax/Flax_1.9/Binaries/Editor/Win64/Development/FlaxEditor.exe",
+      "commandLineArgs": "-project \"D:/Projects/Flax/Prototyping Tools Update\"",
+      "nativeDebugging": false
+    }
+  }
+}

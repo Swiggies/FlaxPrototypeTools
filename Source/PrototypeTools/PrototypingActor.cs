@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using FlaxEngine;
 
 namespace PrototypeTools
@@ -88,6 +90,7 @@ namespace PrototypeTools
                 _collisionData = Content.CreateVirtualAsset<CollisionData>();
                 _meshCollider = GetOrAddChild<MeshCollider>();
                 _meshCollider.HideFlags = HideFlags.HideInHierarchy | HideFlags.DontSelect;
+
                 var label = JobSystem.Dispatch(i =>
                 {
                     if (!_collisionData.CookCollision(CollisionDataType.ConvexMesh, vertices: _vertices.ToArray(), triangles: _triangles.ToArray()))
@@ -97,11 +100,28 @@ namespace PrototypeTools
                     {
                         Debug.LogError("Failed to generate colliders.");
                     }
-                    //if(_tempModel.GenerateSDF())
-                    //    Debug.LogError("Failed to generate SDF.");
                 });
                 JobSystem.Wait(label);
                 _meshCollider.CollisionData = _collisionData;
+
+                Thread thread = new Thread(GenerateSDF);
+                thread.Start();
+            }
+        }
+
+        private void GenerateSDF()
+        {
+            if (_tempModel != null)
+            {
+                bool result = _tempModel.GenerateSDF(resolutionScale: 4, useGPU: true);
+                if (!result)
+                {
+                    Debug.Log($"Sucessfully generated SDF for {Name}.");
+                }
+                else
+                {
+                    Debug.Log($"Failed to generate SDF for {Name}.");
+                }
             }
         }
     }
